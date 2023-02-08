@@ -10,7 +10,7 @@ public class DashboardController {
     @RequestMapping("/dashboard")
     public String displayDashboard(Model model,Authentication authentication) {
         model.addAttribute("username", authentication.getName());
-        model.addAttribute("roles", authentication.getAuthorities().toString());
+        model.addAttribute("roles", authentication.getAuthorities().toString());s
         return "dashboard.html";
     }
 
