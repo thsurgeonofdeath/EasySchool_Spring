@@ -14,6 +14,7 @@ public class ProjectSecurityConfig {
     SecurityFilterChain defaultSecurityFilterChain(HttpSecurity http) throws Exception {
         http.csrf().disable()
                 .authorizeRequests()
+                .requestMatchers("/dashboard").authenticated()
                 .requestMatchers("/home").permitAll()
                 .requestMatchers("/").permitAll()
                 .requestMatchers("/holidays/**").permitAll()
@@ -22,7 +23,11 @@ public class ProjectSecurityConfig {
                 .requestMatchers("/courses").permitAll()
                 .requestMatchers("/about").permitAll()
                 .requestMatchers("/assets/**").permitAll()
-                .and().formLogin().and().httpBasic();
+                .requestMatchers("/login").permitAll()
+                .and().formLogin().loginPage("/login")
+                .defaultSuccessUrl("/dashboard").failureUrl("/login?error=true").permitAll()
+                .and().logout().logoutSuccessUrl("/login?logout=true").invalidateHttpSession(true).permitAll()
+                .and().httpBasic();
         return http.build();
     }
     @Bean
