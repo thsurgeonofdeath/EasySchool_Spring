@@ -12,7 +12,7 @@ import org.springframework.security.web.SecurityFilterChain;
 public class ProjectSecurityConfig {
     @Bean
     SecurityFilterChain defaultSecurityFilterChain(HttpSecurity http) throws Exception {
-        http.csrf().disable()
+        http.csrf().ignoringRequestMatchers("/saveMsg").and()
                 .authorizeRequests()
                 .requestMatchers("/dashboard").authenticated()
                 .requestMatchers("/home").permitAll()
