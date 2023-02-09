@@ -20,7 +20,7 @@ public class HolidaysController {
 
     @GetMapping("/holidays")
     public String displayHolidays(Model model) {
-        List<Holiday> holidays = holidaysRepository.findAllHolidays();
+        List<Holiday> holidays = holidaysRepository.findAll();
         Holiday.Type[] types = Holiday.Type.values();
         for (Holiday.Type type : types) {
             model.addAttribute(type.toString(),
