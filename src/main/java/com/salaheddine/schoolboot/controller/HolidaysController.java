@@ -17,7 +17,6 @@ import java.util.stream.Collectors;
 public class HolidaysController {
     @Autowired
     private HolidaysRepository holidaysRepository;
-
     @GetMapping("/holidays")
     public String displayHolidays(Model model) {
         List<Holiday> holidays = holidaysRepository.findAll();
