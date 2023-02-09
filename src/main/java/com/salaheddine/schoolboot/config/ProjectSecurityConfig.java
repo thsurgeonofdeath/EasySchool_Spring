@@ -2,6 +2,7 @@ package com.salaheddine.schoolboot.config;
 
 import org.springframework.boot.autoconfigure.security.servlet.PathRequest;
 import org.springframework.context.annotation.Bean;
+import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.core.userdetails.User;
@@ -32,11 +33,8 @@ public class ProjectSecurityConfig {
                 .defaultSuccessUrl("/dashboard").failureUrl("/login?error=true").permitAll()
                 .and().logout().logoutSuccessUrl("/login?logout=true").invalidateHttpSession(true).permitAll()
                 .and().httpBasic();
-
         http.headers().frameOptions().disable();
-
         return http.build();
-
     }
     @Bean
     public InMemoryUserDetailsManager userDetailsService() {
@@ -48,7 +46,7 @@ public class ProjectSecurityConfig {
         UserDetails user = User.withDefaultPasswordEncoder()
                 .username("admin")
                 .password("321")
-                .roles("USER","ADMIN")
+                .roles("ADMIN")
                 .build();
         return new InMemoryUserDetailsManager(user, admin);
     }

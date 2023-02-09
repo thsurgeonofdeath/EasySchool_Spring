@@ -1,5 +1,7 @@
 package com.salaheddine.schoolboot.config;
 
+import com.salaheddine.schoolboot.aspects.LoggerAspect;
+import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.web.servlet.config.annotation.ViewControllerRegistry;
 import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
