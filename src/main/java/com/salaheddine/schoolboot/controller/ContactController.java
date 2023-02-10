@@ -10,11 +10,7 @@ import org.springframework.ui.Model;
 import org.springframework.validation.Errors;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
-
-
 import java.util.List;
-import java.util.logging.Logger;
-
 @Slf4j
 @Controller
 public class ContactController {
@@ -37,7 +33,6 @@ public class ContactController {
         contactService.saveMessageDetails(contact);
         return "redirect:/contact";
     }
-
     @RequestMapping("/displayMessages")
     public ModelAndView displayMessages(Model model){
         List<Contact> contactMsgs = contactService.findMsgsWithOpenStatus();
@@ -45,7 +40,6 @@ public class ContactController {
         modelAndView.addObject("contactMsgs",contactMsgs);
         return modelAndView;
     }
-
     @GetMapping(value = "/closeMsg")
     public String closeMsg(@RequestParam int id) {
         contactService.updateMsgStatus(id);
