@@ -1,3 +1,7 @@
+<!--
+Author: W3layouts
+Author URL: http://w3layouts.com
+-->
 <!doctype html>
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
 
@@ -42,10 +46,9 @@
     <div class="row contact-block">
       <div class="col-md-7 contact-right">
         <ul>
-          <li class="alert alert-danger" role="alert"
-              th:each="error : ${#fields.errors('contact.*')}" th:text="${error}" />
+          <li class="alert alert-danger" role="alert" th:each="error : ${#fields.errors('contact.*')}" th:text="${error}" />
         </ul>
-        <form th:action="@{/saveMsg}" method="post" class="signin-form" th:object="${contact}">
+        <form action="/saveMsg" method="post" class="signin-form" th:object="${contact}">
           <div class="input-grids">
             <div class="row">
               <div class="col-sm-6">
@@ -117,7 +120,8 @@
 </section>
 <!-- map -->
 <div class="map">
-  <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d287406.8356099156!2d-64.89545903060514!3d18.33418902684433!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x8c051065f2daacb9%3A0xf91d891d1bc51c05!2sU.S.%20Virgin%20Islands!5e0!3m2!1sen!2sma!4v1675940134530!5m2!1sen!2sma"
+  <iframe
+          src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d193595.15830921454!2d-74.11976369744556!3d40.69766374856529!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x89c24fa5d33f083b%3A0xc80b8f06e177fe62!2sNew%20York%2C%20NY%2C%20USA!5e0!3m2!1sen!2sin!4v1639587930884!5m2!1sen!2sin"
           width="100%" height="400" frameborder="0" style="border: 0px;" allowfullscreen=""></iframe>
 </div>
 <!-- //contact block -->
@@ -172,6 +176,7 @@
       $("#site-header").removeClass("nav-fixed");
     }
   });
+
   //Main navigation Active Class Add Remove
   $(".navbar-toggler").on("click", function () {
     $("header").toggleClass("active");
@@ -188,6 +193,7 @@
   });
 </script>
 <!-- //MENU-JS -->
+
 <!-- disable body scroll which navbar is in active -->
 <script>
   $(function () {
@@ -197,9 +203,11 @@
   });
 </script>
 <!-- //disable body scroll which navbar is in active -->
+
 <!-- bootstrap -->
 <script src="assets/js/bootstrap.min.js"></script>
 <!-- //bootstrap -->
 <!-- //Js scripts -->
 </body>
+
 </html>

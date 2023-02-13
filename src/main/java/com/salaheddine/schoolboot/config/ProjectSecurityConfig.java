@@ -11,17 +11,18 @@ import org.springframework.security.web.SecurityFilterChain;
 public class ProjectSecurityConfig {
     @Bean
     SecurityFilterChain defaultSecurityFilterChain(HttpSecurity http) throws Exception {
-        http.csrf().ignoringRequestMatchers("/saveMsg")
-                .ignoringRequestMatchers("/public/**")
-                .and()
+
+        http.csrf().ignoringRequestMatchers("/saveMsg").ignoringRequestMatchers("/public/**").and()
                 .authorizeHttpRequests()
                 .requestMatchers("/dashboard").authenticated()
                 .requestMatchers("/displayMessages").hasRole("ADMIN")
                 .requestMatchers("/closeMsg/**").hasRole("ADMIN")
+                .requestMatchers("/admin/**").hasRole("ADMIN")
+                .requestMatchers("/displayProfile").authenticated()
+                .requestMatchers("/updateProfile").authenticated()
+                .requestMatchers("/student/**").hasRole("STUDENT")
                 .requestMatchers("/home").permitAll()
                 .requestMatchers("/holidays/**").permitAll()
-                .requestMatchers("/holidays").permitAll()
-                .requestMatchers("/public/**").permitAll()
                 .requestMatchers("/contact").permitAll()
                 .requestMatchers("/saveMsg").permitAll()
                 .requestMatchers("/courses").permitAll()
@@ -29,14 +30,16 @@ public class ProjectSecurityConfig {
                 .requestMatchers("/login").permitAll()
                 .requestMatchers("/logout").permitAll()
                 .requestMatchers("/assets/**").permitAll()
+                .requestMatchers("/public/**").permitAll()
                 .and().formLogin().loginPage("/login")
                 .defaultSuccessUrl("/dashboard").failureUrl("/login?error=true").permitAll()
                 .and().logout().logoutSuccessUrl("/login?logout=true").invalidateHttpSession(true).permitAll()
                 .and().httpBasic();
+
         return http.build();
     }
     @Bean
-    public PasswordEncoder passwordEncoder(){
+    public PasswordEncoder passwordEncoder() {
         return new BCryptPasswordEncoder();
     }
 }

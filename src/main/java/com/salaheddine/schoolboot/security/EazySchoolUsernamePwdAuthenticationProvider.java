@@ -19,9 +19,11 @@ import java.util.List;
 
 @Component
 public class EazySchoolUsernamePwdAuthenticationProvider
-        implements AuthenticationProvider {
+        implements AuthenticationProvider
+{
     @Autowired
     private PersonRepository personRepository;
+
     @Autowired
     private PasswordEncoder passwordEncoder;
 
@@ -31,23 +33,21 @@ public class EazySchoolUsernamePwdAuthenticationProvider
         String email = authentication.getName();
         String pwd = authentication.getCredentials().toString();
         Person person = personRepository.readByEmail(email);
-        if(person.getRoles() == null) {
-            System.out.println("roles object is null");
-            return null;
-        }
         if(null != person && person.getPersonId()>0 &&
                 passwordEncoder.matches(pwd,person.getPwd())){
             return new UsernamePasswordAuthenticationToken(
-                    person.getName(), null, getGrantedAuthorities(person.getRoles()));
+                    email, null, getGrantedAuthorities(person.getRoles()));
         }else{
             throw new BadCredentialsException("Invalid credentials!");
         }
     }
+
     private List<GrantedAuthority> getGrantedAuthorities(Roles roles) {
         List<GrantedAuthority> grantedAuthorities = new ArrayList<>();
         grantedAuthorities.add(new SimpleGrantedAuthority("ROLE_"+roles.getRoleName()));
         return grantedAuthorities;
     }
+
     @Override
     public boolean supports(Class<?> authentication) {
         return authentication.equals(UsernamePasswordAuthenticationToken.class);

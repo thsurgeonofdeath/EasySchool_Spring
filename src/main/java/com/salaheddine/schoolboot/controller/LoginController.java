@@ -9,6 +9,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
+
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 
@@ -28,8 +29,9 @@ public class LoginController {
         } else if(register != null) {
             errorMessage = "You registration successful. Login with registered credentials !!";
         }
+
         model.addAttribute("errorMessage", errorMessage);
-        return "login";
+        return "login.html";
     }
     @RequestMapping(value="/logout", method = RequestMethod.GET)
     public String logoutPage (HttpServletRequest request, HttpServletResponse response) {
