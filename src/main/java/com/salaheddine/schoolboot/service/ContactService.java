@@ -48,7 +48,7 @@ public class ContactService {
 
     public boolean updateMsgStatus(int contactId){
         boolean isUpdated = false;
-        int rows = contactRepository.updateStatusById(EazySchoolConstants.CLOSE,contactId);
+        int rows = contactRepository.updateMsgStatus(EazySchoolConstants.CLOSE,contactId);
         if(rows > 0) {
             isUpdated = true;
         }
