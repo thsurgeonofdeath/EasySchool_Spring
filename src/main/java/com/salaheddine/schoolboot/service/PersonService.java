@@ -13,7 +13,6 @@ import org.springframework.stereotype.Service;
 public class PersonService {
     @Autowired
     private PersonRepository personRepository;
-
     @Autowired
     private RolesRepository rolesRepository;
     public boolean createNewPerson(Person person){
