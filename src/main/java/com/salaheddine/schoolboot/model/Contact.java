@@ -1,5 +1,6 @@
 package com.salaheddine.schoolboot.model;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 import jakarta.validation.constraints.*;
 import lombok.Data;
@@ -37,6 +38,7 @@ public class Contact extends BaseEntity{
     @GeneratedValue(strategy= GenerationType.AUTO,generator="native")
     @GenericGenerator(name = "native",strategy = "native")
     @Column(name = "contact_id")
+    @JsonIgnore
     private int contactId;
 
     @NotBlank(message="Name must not be blank")
