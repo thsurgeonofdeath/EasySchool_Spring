@@ -3,13 +3,13 @@ The official website of Easy School, a fun school with flexible courses. this ap
 
 ### Configuration
 
-To run the application for the first time, few configurations are needed :
+After cloning the repo, and to run the application for the first time, few configurations are needed :
 
 - On your local sql server, create a database named **easyschool**
-- if you're using SQL on the *3306* port make sure to change it in the applications properties
+- if you're using SQL on the *3306* port make sure to change it in the applications properties, as it's configured to *3307*
 - run the two scripts inside the static folder, *schema.sql* first to create the tables of the database and establish the relationships between them, then *data.sql* to populate some tables with some dummy data and necessary data
 - run the application by running the main *SchoolbootApplication*
-- Open the application on `localhost:8080`
+- Start and open the application on `localhost:8080`
 - You can create a new student account or login using the administrator credentials : Email : *admin@eazyschool.com* && Password : *admin*
 
 ### Features 
